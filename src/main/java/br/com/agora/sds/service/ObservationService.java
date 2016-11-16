@@ -18,5 +18,9 @@ public class ObservationService {
 	public List<Observation> listByStation(String id, Date sDate, Date eDate) {
 		return observationRepository.listByStation(id, sDate, eDate);
 	}
+	
+	public List<Observation> listByStation(String id, Date sDate, Date eDate, String property) {
+		return observationRepository.listByStation(id, sDate, eDate, property);
+	}
 
 }

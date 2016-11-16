@@ -35,7 +35,36 @@ public class ObservationController {
 			System.out.println(formatter.parse(obs.getsDate()));
 			System.out.println(formatter.parse(obs.geteDate()));
 
-			return oService.listByStation(obs.getId(), formatter.parse(obs.getsDate()), formatter.parse(obs.geteDate()));
+			return oService.listByStation(obs.getId(), formatter.parse(obs.getsDate()),
+					formatter.parse(obs.geteDate()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	@RequestMapping(value = "/listByStationAndProperty", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Observation> listByStationAndProperty(@RequestBody ObservationRequest obs) {
+		System.out.println("entrou!!");
+		System.out.println(obs.getId());
+		System.out.println(obs.getsDate());
+		System.out.println(obs.geteDate());
+		System.out.println(obs.getProperty());
+		// System.out.println(id);
+		// System.out.println(sDate);
+		// System.out.println(eDate);
+		// System.out.println(property);
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd H:m:s");
+
+		try {
+			System.out.println(formatter.parse(obs.getsDate()));
+			System.out.println(formatter.parse(obs.geteDate()));
+
+			return oService.listByStation(obs.getId(), formatter.parse(obs.getsDate()), formatter.parse(obs.geteDate()),
+					obs.getProperty());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
